@@ -7,13 +7,6 @@ Es una plataforma de comunicación web en tiempo real, que permite comunicar dif
 <p align="center"><img src="static/images/manifest/icon-512x512.png" width="384"/></p>
 
 
-# Autores
-
-Nidia Hidalgo - Especialista Lider, División de Género y Diversidad, BID.
-
-René Navarrete - Consultor Experto en Tecnología, RXDBit.
-
-
 # Requerimientos
 
 BID Contact-Os se encuentra desarrollada con las siguientes herramientas y librerías:
@@ -131,11 +124,18 @@ Para instalar BID Contact-Os hay que seguir los siguientes pasos (para Ubuntu 20
 
 11 - Ejecutar models/ddl.py para generar la base de datos mínima necesaria.
 
-12 - Poner el Web Server en producción:
+12 - Ejecutar el Web Server en producción:
 
     + Apache HTTPD - swing_cms.apache2.conf
     O
     + Nginx/Gunicorn - swing_cms-socketio.*.conf
+
+
+# Autores
+
+Nidia Hidalgo - Especialista Lider, División de Género y Diversidad, BID.
+
+René Navarrete - Consultor Experto en Tecnología, RXDBit.
 
 
 # Créditos
