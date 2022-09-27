@@ -1,21 +1,21 @@
-# Swing CMS - Contact-Os
-Contact-Os, Progressive Web App
+# BID Contact-Os
+BID Contact-Os, Progressive Web App.
+<p align="center"><img src="app/static/images/manifest/icon512x512.png" width="512"/></p>
+Es una plataforma de comunicación web en tiempo real, que permite comunicar diferentes personas de manera segura por medio de diferentes canales de comunicación como lo son: Audio, Video y Chat. Además, permite la creación de citas, reportería estadística, módulos administrativos, SEO, login SSO y muchas otras funcionalidades que permiten que Contact-Os sea una plataforma versátil y liviana para adoptar y personalizar.
 
--RXDBit
+# Requerimientos
 
-# Requirements
-
-Swing CMS is being develop with the following libraries:
-- Python 3.8 (on a virtual environment)
+BID Contact-Os se encuentra desarrollada con las siguientes herramientas y librerías:
+- Python 3.8 (en modo de ambiente virtual)
 - Python pip 21.2.4
 - Flask 2.0.1
-- Nginx 1.14.0 and Gunicorn 20.1.0
-- SocketIO 3.1.0, Flask-SocketIO 5.1.1 and SimplePeer 9.7
+- Nginx 1.14.0 y Gunicorn 20.1.0
+- SocketIO 3.1.0, Flask-SocketIO 5.1.1 y SimplePeer 9.7
 - NodeJS 14.17.6
 - Elasticsearch 7.15.2
-- MySQL 8.0 or PostgreSQL 14.1
+- MySQL 8.0 o PostgreSQL 14.1
 - npm 6.14.15
-- npm libraries:
+- npm (librerías):
     - webpack@5
     - css-loader
     - sass-loader
@@ -28,13 +28,13 @@ Swing CMS is being develop with the following libraries:
     - lots more!...
 
 
-# Installation steps
+# Pasos de instalación
 
-To install Swing CMS, follow the next steps (under Ubuntu 16.04):
+Para instalar BID Contact-Os hay que seguir los siguientes pasos (para Ubuntu 20.04):
 
-1 - Create a directory into which clone Swing CMS. If it's being deployed on a web server, like Apache HTTPD, create it under the proper directory. (i.e.: /var/www/)
+1 - Crear un directorio para clonar BID Contact-Os. (ej: /var/www/)
 
-2 - Install git:
+2 - Instalar git:
 
     ~: sudo add-apt-repository ppa:git-core/ppa
 
@@ -42,29 +42,29 @@ To install Swing CMS, follow the next steps (under Ubuntu 16.04):
 
     ~: sudo apt-get install git
 
-3 - Clone Swing CMS from GitHub's repository:
+3 - Clonar BID Contact-Os del repositorio oficial:
 
-    ~: git clone git@github.com:renegng/contact-os.git
+    ~: git clone git@github.com:renegng/bid_contact-os.git
 
-4 - Inside the prevoius folder, install a Python 3.8 or greater virtual environment and the RDBMS (MySQL, ElasticSearch) prerequisites:
+4 - Dentro del folder anterior, instalar Python 3.8 bajo un ambiente virtual y los pre-requisitos de las bases de datos (MySQL/PostgreSQL, ElasticSearch):
 
     ~: [python | python3 | python3.8 | python3.x] -m venv venv
     ~: sudo apt-get install build-essential python3-dev libmysqlclient-dev
     ~: sudo apt-get install elasticsearch
 
-5 - Inside the prevoius folder, activate the virtual environment:
+5 - Dentro del folder anterior, activar el ambiente virtual de Python:
 
     ~: source ./venv/bin/activate
 
-6 - Within the activated virtual environment, install Flask and all PiP applications:
+6 - Dentro del ambiente virtual activo, instalar Flask y todas las aplicaciones de PiP:
 
     ~: pip install --upgrade pip
 
-    You could install all packages automatically:
+    Se puede instalar todos los paquetes en un solo paso ejecutando el siguiente comando:
 
     ~: pip install -r requirements.txt
 
-    or independently:
+    O, se pueden instalar de manera independiente:
 
     ~: pip install wheel
     ~: pip install flask
@@ -83,7 +83,7 @@ To install Swing CMS, follow the next steps (under Ubuntu 16.04):
     ~: pip install cryptography
     ~: pip install sqlalchemy-utils
 
-    For ChatBot component, install following packages:
+    (OPCIONAL) Para los componentes del ChatBot, se deben instalar los siguientes componentes:
     ~: pip install pyspellchecker
     ~: pip install chatterbot
     ~: pip install pyyaml
@@ -92,24 +92,24 @@ To install Swing CMS, follow the next steps (under Ubuntu 16.04):
 
     ~: deactivate
 
-7 - Install the appropriate plugin for Flask and Python to be executed on the web server:
+7 - Instalar el plugin apropiado de Flask dependiendo del Web Server sobre el cual se ejecutará:
 
     ~: sudo apt-get install [libapache2-mod-wsgi-py3 | nginx]
 
-8 - Instal NodeJS:
+8 - Instalar NodeJS:
 
     ~: curl -fsSL https://deb.nodesource.com/setup_14.x | sudo -E bash -
 
     ~: sudo apt-get install -y nodejs
 
-9 - Execute NodeJS's npm to install all libraries needed:
+9 - Ejecutar NodeJS npm para instalar las librerías requisito de la plataforma:
 
     ~: npm install
     ~: npm run build-prd-wp
 
-** - AOS can sometimes generate some issues. To prevent that delete the .babelrc file under the node_modules/aos folder.
+** - AOS puede generar inconvenientes ocasionalmente. Para prevenir esto, es necesario eliminar el archivo .babelrc dentro del folder node_modules/aos.
 
-10 - Copy/configure the instance folder with all proper credentials and configurations:
+10 - Copiar y editar los archivos dentro de la carpeta instance con las credenciales y rutas adecuadas:
     
     + firebase-admin-key
     + firebase-api-init
@@ -118,37 +118,37 @@ To install Swing CMS, follow the next steps (under Ubuntu 16.04):
     + config_firebase
     + config_models
 
-11 - Execute models/ddl.py to generate the database.
+11 - Ejecutar models/ddl.py para generar la base de datos mínima necesaria.
 
-12 - Deploy your webserver:
+12 - Poner el Web Server en producción:
 
     + Apache HTTPD - swing_cms.apache2.conf
-    OR
+    O
     + Nginx/Gunicorn - swing_cms-socketio.*.conf
 
 
-# Credits to
+# Créditos
 
-Proper credit for the following people/teams:
-- Apache HTTPD, Nginx and Gunicorn web server that never fails.
-- Google's Material Design, Workbox and Firebase team, for making the web awesome!
-- Polymer Project, for an amazing main HTML PWA Template structure.
-- Python, Flask, NodeJS, SQLAlchemy(-Utils), Migrate, Alembic, WTForms, Login, Cryptography GitHub and everyone's amazing frameworks.
-- MySQL, Firebase, ElasticSearch for amazing Databases with amazing features.
-- SocketIO and simple-peer for their wonderful frameworks to implement WebRTC.
-- dr5hn's Countries States Cities Database for providing an amazing location DB.
-- Localforage for their simple and amazing localStorage wrapper.
-- jsCalendar and LitePicker for their amazing simple modern calendar library.
-- Chart.js for their lite and modern data graphs charts.
-- Traversy Media, for incredible tips & tricks overall.
-- Visual Studio Code, for an incredible IDE.
-- Twitter Twemoji for the amazing emojis.
-- Ubuntu team, stable OS to work on.
+Se extienden los créditos a los siguientes equipos:
+- Apache HTTPD, Nginx y Gunicorn web server que nunca falla.
+- Google Material Design, Workbox y Firebase, por hacer el internet genial!
+- Polymer Project,por una estructura genial inicial de base para PWA.
+- Python, Flask, NodeJS, SQLAlchemy(-Utils), Migrate, Alembic, WTForms, Login, Cryptography GitHub y todos los frameworks espectaculares.
+- MySQL, PostgreSQL, Firebase, ElasticSearch por bases de datos geniales.
+- SocketIO y simple-peer por sus frameworks espectáculares de WebRTC.
+- dr5hn's Countries States Cities Database por proveer una excelente base de datos de localización.
+- Localforage por su increíble wrapper de localStorage.
+- jsCalendar y LitePicker por su increíble y moderna librería de calendario.
+- Chart.js por sus gráficos de data livianos y modernos.
+- Traversy Media, por excelentes cursos libres sobre frameworks modernos.
+- Visual Studio Code, por ser el mejor IDE actual.
+- Twitter Twemoji por sus emojis tan fabulosos.
+- El equipo de Ubuntu, por brindar el mejor y más amigable OS de productividad.
 - Animate.css from <a href="https://animate.style/" title="Animate CSS">animate.style/</a> for their amazing css animations!
 - Icons made by <a href="http://www.freepik.com/" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>
 - Icons made by <a href="https://www.flaticon.com/authors/vitaly-gorbachev" title="Vitaly Gorbachev">Vitaly Gorbachev</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>
 - Icons made by <a href="https://www.flaticon.com/authors/fjstudio" title="fjstudio">fjstudio</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>
 - Icons made by <a href="https://www.flaticon.com/authors/dinosoftlabs" title="DinosoftLabs">DinosoftLabs</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>
-- Anchorme for URL detection and replacement
-- Sounds from <a href="https://www.zapsplat.com/" title="Zapsplat">zapsplat.com</a> and <a href="https://mixkit.co/" title="Mixkit">mixkit.com</a>
-- dev-console.macro, date-fns & crypto-js for essential and amazing JS Libraries.
+- Anchorme por su detección y reemplazo automático de URLs.
+- Sounds from <a href="https://www.zapsplat.com/" title="Zapsplat">zapsplat.com</a> y <a href="https://mixkit.co/" title="Mixkit">mixkit.com</a>
+- dev-console.macro, date-fns & crypto-js por librerías esenciales y robustas de Javascript.
