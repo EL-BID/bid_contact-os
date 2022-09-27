@@ -4,13 +4,15 @@ BID Contact-Os, Progressive Web App.
 
 Es una plataforma de comunicación web en tiempo real, que permite comunicar diferentes personas de manera segura por medio de diferentes canales de comunicación como lo son: Audio, Video y Chat. Además, permite la creación de citas, reportería estadística, módulos administrativos, SEO, login SSO y muchas otras funcionalidades que permiten que Contact-Os sea una plataforma versátil y liviana para adoptar y personalizar.
 
-<p align="center"><img src="static/images/manifest/icon-512x512.png" width="256"/></p>
+<p align="center"><img src="static/images/manifest/icon-512x512.png" width="384"/></p>
+
 
 # Autores
 
 Nidia Hidalgo - Especialista Lider, División de Género y Diversidad, BID.
 
 René Navarrete - Consultor Experto en Tecnología, RXDBit.
+
 
 # Requerimientos
 
@@ -34,7 +36,7 @@ BID Contact-Os se encuentra desarrollada con las siguientes herramientas y libre
     - babel-core 
     - babel-loader
     - material-components-web
-    - lots more!...
+    - muchas más!...
 
 
 # Pasos de instalación
