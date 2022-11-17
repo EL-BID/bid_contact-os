@@ -9,11 +9,12 @@ from flask import current_app as app
 from flask_babel import Babel
 from flask_login import LoginManager, login_user, current_user, logout_user
 from models.models import crypto_key, db, es, User
-
+from sqlalchemy import create_engine
 
 # Enable instance of SQLAlchemy
-db.init_app(app)
+# db.init_app(app)
 
+conn = create_engine(app.config['SQLALCHEMY_DATABASE_URI'])
 
 # Enable Babel Internationalization
 babel = Babel(app)

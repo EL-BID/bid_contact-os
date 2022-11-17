@@ -2,6 +2,7 @@ from flask import Flask
 from instance.config_app import configType as cfgapp
 from instance.config_firebase import configType as cfgfirebase
 from instance.config_models import configType as cfgmodels
+# from views.reports_api import reports_api as reports_view
 
 # Enables Instance Folder Configuration (instance_relative_config=True) 
 app = Flask(__name__, instance_relative_config=True)
@@ -23,6 +24,9 @@ with app.app_context():
 
     # API Fetchs
     app.register_blueprint(api_view)
+
+     # API Reports
+    # app.register_blueprint(reports_view)
 
     # Home
     app.register_blueprint(home_view)
