@@ -628,53 +628,31 @@ class User(ElasticMixin, UserMixin, db.Model):
 class UserExtraInfo(db.Model):
     __tablename__ = 'user_extra_info'
     id = db.Column(db.Integer, db.ForeignKey('user.id'), primary_key=True)
-    known_by = db.Column(db.String(300), unique=False, nullable=True)
-    pregnant = db.Column(db.String(300), unique=False, nullable=True)
-    marital_status = db.Column(db.String(300), unique=False, nullable=True) 
-    education_level = db.Column(db.String(300), unique=False, nullable=True)
-    emotional_state = db.Column(db.JSON, unique=False, nullable=True)
-    psychological_disorders = db.Column(db.JSON, unique=False, nullable=True)
-    ischildren = db.Column(db.Integer, unique=False, nullable=True)
-    childrenbirthdate = db.Column(db.date, unique=False, nullable=True)
-    migrant = db.Column(db.JSON, unique=False, nullable=True)
-    geographical_region = db.Column(db.JSON, unique=False, nullable=True)
-    family_support = db.Column(db.JSON, unique=False, nullable=True)
-    factual_details = db.Column(db.JSON, unique=False, nullable=True)
-    national_id_type = db.Column(db.Integer, db.ForeignKey('catalog_id_document_types.id'), nullable=True)
     national_id = db.Column(db.String(30), unique=False, nullable=True)
     last_names = db.Column(db.String(300), unique=False, nullable=True)
     names = db.Column(db.String(300), unique=False, nullable=True)
+    birthday = db.Column(db.Date, unique=False, nullable=True)
     alias = db.Column(db.String(300), unique=False, nullable=True)
     avatar = db.Column(db.String(16), unique=False, nullable=True)
     country = db.Column(db.JSON, unique=False, nullable=True)
     state = db.Column(db.JSON, unique=False, nullable=True)
     city = db.Column(db.JSON, unique=False, nullable=True)
+    user_extra_form = db.Column(db.JSON, unique=False, nullable=True)
     user = db.relationship('User', lazy='subquery', back_populates='extra_info')
 
     def __repr__(self):
         return jsonify(
             id = self.id,
-            known_by = self.known_by,
-            pregnant = self.pregnant,
-            marital_status = self.marital_status,
-            education_level = self.marital_status,
-            emotional_state = self.emotional_state,
-            psychological_disorders = self.psychological_disorders,
-            ischildren = self.ischildren,
-            childrenbirthdate = self.childrenbirthdate,
-            migrant = self.migrant,
-            geographical_region = self.geographical_region,
-            family_support = self.family_support,
-            factual_details = self.factual_details,
-            national_id_type = self.national_id_type,
             national_id = self.national_id,
             alias = self.alias,
-            names = self.names,
+            names = self.names,            
             last_names = self.last_names,
+            birthday  = self.birthday,
             avatar = self.avatar,
             country = self.country,
             state = self.state,
-            city = self.city
+            city = self.city,
+            user_extra_form = self.user_extra_form
         )
 
 
