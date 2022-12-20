@@ -12,7 +12,7 @@ from models.models import crypto_key, db, es, User
 from sqlalchemy import create_engine
 
 # Enable instance of SQLAlchemy
-# db.init_app(app)
+db.init_app(app)
 
 conn = create_engine(app.config['SQLALCHEMY_DATABASE_URI'])
 

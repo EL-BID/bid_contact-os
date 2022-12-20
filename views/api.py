@@ -64,6 +64,24 @@ def _d_appointment():
         app.logger.error('** SWING_CMS ** - API Appointment Detail Error: {}'.format(e))
         return jsonify({ 'status': 'error', 'msg': e })
 
+# Update the Appointment's Details
+@api.route('/api/detail/extra_info/', methods = ['PUT'])
+# @login_required
+def _d_update_appointment():
+    app.logger.debug('** SWING_CMS ** - API Update extra_info')
+    try:
+        # POST: Save Appointment
+        if request.method == 'PUT':
+            usr_data = request.json['data']
+
+            # Update User information
+            if usr_data is not None:
+                _u_userinfo(usr_data)
+            return jsonify({ 'status': 201, 'msg': 'Información actualizada' })
+    except Exception as e:
+        app.logger.error('** SWING_CMS ** - API Update extra_info Error: {}'.format(e))
+        return jsonify({ 'status': 'error', 'msg': e })
+
 # Get the Service's Details
 @api.route('/api/detail/service/<string:service_id>/', methods = ['GET'])
 # @login_required
@@ -129,6 +147,7 @@ def _d_user(user_id = None):
                     'national_id': None,
                     'national_id_type': None,
                     'phonenumber': None,
+                    'extra_data_form': None,
                     'roles': None,
                     'state': None,
                     'status': 404
@@ -156,6 +175,7 @@ def _d_user(user_id = None):
                         response['country'] = detail.extra_info.country
                         response['state'] = detail.extra_info.state
                         response['city'] = detail.extra_info.city
+                        response['extra_data_form'] = detail.extra_info.extra_data_form
 
                 return jsonify(response)
             else:
@@ -327,23 +347,33 @@ def _u_userinfo(js):
             
             db.session.add(user_extra)
             db.session.commit()
-            db.session.refresh(user)
+            user.extra_info = user_extra
+            # db.session.refresh(user)
         
-        user.extra_info.alias = js['alias']
-        user.extra_info.names = js['names']
-        user.extra_info.last_names = js['last_names']
-        user.extra_info.country = js['country']
-        user.extra_info.state = js['state']
-        user.extra_info.city = js['city']
-        if js['national_id_type'] is not None:
+        if js.get('alias') is not None:
+            user.extra_info.alias = js['alias']
+        if js.get('names') is not None:
+            user.extra_info.names = js['names']
+        if js.get('last_names') is not None:
+            user.extra_info.last_names = js['last_names']
+        if js.get('country') is not None:
+            user.extra_info.country = js['country']
+        if js.get('state') is not None:
+            user.extra_info.state = js['state']
+        if js.get('city') is not None:
+            user.extra_info.city = js['city']
+        if js.get('extra_data_form') is not None:
+            user.extra_info.extra_data_form = js['extra_data_form']
+        if js.get('national_id_type') is not None:
             natid = CatalogIDDocumentTypes.query.filter_by(name_short = js['national_id_type']).first()
             user.extra_info.national_id = js['national_id']
             user.extra_info.national_id_type = natid.id
 
-        if js['birthdate'] is not None:
+        if js.get('birthdate') is not None:
             date_format = '%Y-%m-%d'
             user.birthdate = dt.strptime(js['birthdate'], date_format)
-        user.phonenumber = js['phonenumber']
+        if js.get('phonenumber') is not None:
+            user.phonenumber = js['phonenumber']
         
         db.session.add(user)
         db.session.commit()

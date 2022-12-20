@@ -629,21 +629,22 @@ class UserExtraInfo(db.Model):
     __tablename__ = 'user_extra_info'
     id = db.Column(db.Integer, db.ForeignKey('user.id'), primary_key=True)
     national_id = db.Column(db.String(30), unique=False, nullable=True)
+    national_id_type = db.Column(db.Integer, unique=False, nullable=True)
     last_names = db.Column(db.String(300), unique=False, nullable=True)
     names = db.Column(db.String(300), unique=False, nullable=True)
-    birthday = db.Column(db.Date, unique=False, nullable=True)
     alias = db.Column(db.String(300), unique=False, nullable=True)
     avatar = db.Column(db.String(16), unique=False, nullable=True)
     country = db.Column(db.JSON, unique=False, nullable=True)
     state = db.Column(db.JSON, unique=False, nullable=True)
     city = db.Column(db.JSON, unique=False, nullable=True)
-    user_extra_form = db.Column(db.JSON, unique=False, nullable=True)
+    extra_data_form = db.Column(db.JSON, unique=False, nullable=True)
     user = db.relationship('User', lazy='subquery', back_populates='extra_info')
 
     def __repr__(self):
         return jsonify(
             id = self.id,
             national_id = self.national_id,
+            national_id_type = self.national_id_type,
             alias = self.alias,
             names = self.names,            
             last_names = self.last_names,
