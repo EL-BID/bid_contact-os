@@ -318,6 +318,11 @@ def _statistics():
     app.logger.debug('** SWING_CMS ** - Statistics')
     return render_template('stats.html')
 
+@home.route('/reporting/')
+@login_required
+def _reporting():
+    app.logger.debug('** SWING_CMS ** - Reporting')
+    return render_template('reporting.html')
 
 @home.route('/terminosdelservicio/')
 def _terminosdelservicio():
