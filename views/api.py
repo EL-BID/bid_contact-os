@@ -82,6 +82,32 @@ def _d_update_appointment():
         app.logger.error('** SWING_CMS ** - API Update extra_info Error: {}'.format(e))
         return jsonify({ 'status': 'error', 'msg': e })
 
+    # Get a list countries
+#@api.route('/api/list/countries', methods = ['GET'])
+#def list_countries(countryId = None):
+    #app.logger.debug('** SWING_CMS ** - API get countries')
+    #try:
+     #   if request.method == 'GET':
+      #      if countryId is not None:
+       #         response = {
+        #            'id': None,
+         #           'name': None,
+          #          'nomenclature': None,
+           #         'structure': None,
+            #        'status': 404
+            #}
+        #detail = User.query.filter(User.id == countryId ).first()
+        #if detail is not None:
+         #   response['status'] = 200
+          #  response['name'] = detail.name
+           # response['nomenclature'] = detail.nomenclature
+            #response['structure'] = detail.structure
+        #return jsonify(response)
+        
+    #except Exception as e:
+     #   app.logger.error('** SWING_CMS ** - API User Detail Error: {}'.format(e))
+      #  return jsonify({ 'status': 'error', 'msg': e })
+
 # Get the Service's Details
 @api.route('/api/detail/service/<string:service_id>/', methods = ['GET'])
 # @login_required
