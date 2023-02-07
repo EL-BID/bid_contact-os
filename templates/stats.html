@@ -8,16 +8,16 @@
 <main class="s-main-content container-color-background">
     <div class="mdc-layout-grid container-size-xs">
         <div class="mdc-layout-grid__inner">
-            <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-5-desktop mdc-layout-grid__cell--span-8-tablet 
+            <!-- <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-5-desktop mdc-layout-grid__cell--span-8-tablet 
                         mdc-layout-grid__cell--align-middle container-justify-center s-font-align-center">
                 <img class="resize-image-2fit-50" src="{{ url_for('static', filename='images/manifest/stats.svg') }}" alt="Logo Funciones" />
-            </div>
-            <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-7-desktop mdc-layout-grid__cell--span-8-tablet 
+            </div> -->
+            <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12-desktop mdc-layout-grid__cell--span-8-tablet 
                         mdc-layout-grid__cell--align-middle container-justify-center">
-                <div class="mdc-typography--headline2 s-font-color-primary">
+                <div class="mdc-typography--headline4 s-font-color-primary" style="text-align: center;">
                     Estadísticas
                 </div>
-                <div class="mdc-typography--headline4 s-font-color-secondary">
+                <div class="mdc-typography--headline6 s-font-color-secondary">
                     Reportería de Contact-Os.
                 </div>
             </div>
@@ -25,12 +25,12 @@
     </div>
     <div class="mdc-layout-grid container-stats">
         <div class="mdc-layout-grid__inner">
-            <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-4-tablet
-                        mdc-layout-grid__cell--span-4-phone mdc-layout-grid__cell--align-top container-justify-center">
+            <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12-desktop mdc-layout-grid__cell--span-4-tablet
+                        mdc-layout-grid__cell--span-4-phone mdc-layout-grid__cell--align-top" style="display: flex; flex-direction:row; background-color: #cbd0d6; padding: 8px 16px;">
                 <p class="mdc-typography--subtitle1 s-font-color-primary">
                     Filtra por fecha:
                 </p>
-                <div>
+                <div style="margin-left: 16px;">
                     <label class="mdc-text-field mdc-text-field--filled mdc-text-field--label-floating" id="filter-date" data-assigned-var>
                         <span class="mdc-text-field__ripple"></span>
                         <input id="f-filter-date-input" class="mdc-text-field__input" type="text"
@@ -39,7 +39,7 @@
                         <span class="mdc-line-ripple"></span>
                     </label>
                 </div>
-                <p class="mdc-typography--subtitle1 s-font-color-primary">
+                <!-- <p class="mdc-typography--subtitle1 s-font-color-primary">
                     Exportar datos:
                 </p>
                 <div class="container-stats-export">
@@ -56,89 +56,188 @@
                         <span class="mdc-button__label">PDF</span>
                     </button>
                 </div>
+                <button id="newIndicators" class="mdc-button mdc-button--raised button-news-indicators" style="margin-top: 16px;"
+                        aria-label="New Indicators" alt="new indicators">
+                    <div class="mdc-button__ripple"></div>
+                    <i class="mdc-button__icon fa-solid fa-square-plus"></i>
+                    <span class="mdc-button__label">Nuevos Indicadores</span>
+                </button> -->
             </div>
-            <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-8-desktop mdc-layout-grid__cell--span-4-tablet
-                        mdc-layout-grid__cell--span-4-phone mdc-layout-grid__cell--align-top container-stats-list">
-                <div class="mdc-card s-mdc-card__stats-size-s">
-                    <div class="mdc-card__primary-action" tabindex="0">
-                        <div class="s-mdc-card__stats-title">
-                            <i class="material-icons s-font-color-very-satisfied">signal_wifi_4_bar</i>
-                            <div class="mdc-typography--subtitle2">
-                                Atenciones exitosas
+            <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12-desktop mdc-layout-grid__cell--span-4-tablet
+            mdc-layout-grid__cell--span-4-phone" style="background-color: #cbd0d6; padding: 16px;">
+                <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12-desktop mdc-layout-grid__cell--span-4-tablet
+                mdc-layout-grid__cell--span-4-phone mdc-layout-grid__cell--align-top container-stats-list">
+                    <div class="mdc-card s-mdc-card__stats-size-s">
+                        <div class="mdc-card__primary-action" tabindex="0">
+                            <div class="s-mdc-card__stats-title">
+                                <i class="material-icons s-font-color-very-satisfied">signal_wifi_4_bar</i>
+                                <div class="mdc-typography--subtitle2">
+                                    Atenciones exitosas
+                                </div>
+                            </div>
+                            <div class="mdc-typography--headline2 s-font-color-primary s-mdc-card__stats-result">
+                                150
+                            </div>
+                            <div class="mdc-typography--caption s-font-color-secondary s-mdc-card__stats-comment">
+                                Comunicación sin interrupciones
                             </div>
                         </div>
-                        <div class="mdc-typography--headline2 s-font-color-primary s-mdc-card__stats-result">
-                            350
+                    </div>
+                    <div class="mdc-card s-mdc-card__stats-size-s">
+                        <div class="mdc-card__primary-action" tabindex="0">
+                            <div class="s-mdc-card__stats-title">
+                                <i class="material-icons s-font-color-dissatisfied">signal_wifi_statusbar_connected_no_internet_4</i>
+                                <div class="mdc-typography--subtitle2">
+                                    Atenciones con interrupción
+                                </div>
+                            </div>
+                            <div class="mdc-typography--headline2 s-font-color-primary s-mdc-card__stats-result">
+                                100
+                            </div>
+                            <div class="mdc-typography--caption s-font-color-secondary s-mdc-card__stats-comment">
+                                Comunicación con intermitencias
+                            </div>
                         </div>
-                        <div class="mdc-typography--caption s-font-color-secondary s-mdc-card__stats-comment">
-                            Comunicación sin interrupciones
+                    </div>
+                    <div class="mdc-card s-mdc-card__stats-size-s">
+                        <div class="mdc-card__primary-action" tabindex="0">
+                            <div class="s-mdc-card__stats-title">
+                                <i class="material-icons s-font-color-very-dissatisfied">signal_wifi_connected_no_internet_4</i>
+                                <div class="mdc-typography--subtitle2">
+                                    Atenciones fallidas
+                                </div>
+                            </div>
+                            <div class="mdc-typography--headline2 s-font-color-primary s-mdc-card__stats-result">
+                                50
+                            </div>
+                            <div class="mdc-typography--caption s-font-color-secondary s-mdc-card__stats-comment">
+                                No logró comunicarse
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mdc-card s-mdc-card__stats-size-s">
+                        <div class="mdc-card__primary-action" tabindex="0">
+                            <div class="s-mdc-card__stats-title">
+                                <i class="material-icons s-font-color-chat-away">timer</i>
+                                <div class="mdc-typography--subtitle2">
+                                    Duración promedio
+                                </div>
+                            </div>
+                            <div class="mdc-typography--headline2 s-font-color-primary s-mdc-card__stats-result">
+                                27 min.
+                            </div>
+                            <div class="mdc-typography--caption s-font-color-secondary s-mdc-card__stats-comment">
+                                Tiempo promedio que dura una atención
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="mdc-card s-mdc-card__stats-size-s">
-                    <div class="mdc-card__primary-action" tabindex="0">
-                        <div class="s-mdc-card__stats-title">
-                            <i class="material-icons s-font-color-dissatisfied">signal_wifi_statusbar_connected_no_internet_4</i>
-                            <div class="mdc-typography--subtitle2">
-                                Atenciones con interrupción
+                <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12-desktop mdc-layout-grid__cell--span-4-tablet
+                mdc-layout-grid__cell--span-4-phone mdc-layout-grid__cell--align-top container-stats-list">
+                    <div class="mdc-card s-mdc-card__stats-size-l">
+                        <div class="mdc-card__primary-action" tabindex="0">
+                            <div class="s-mdc-card__stats-title">
+                                <i class="material-icons s-font-color-secondary">query_stats</i>
+                                <div class="mdc-typography--subtitle2">
+                                    Atenciones por servicios
+                                </div>
+                            </div>
+                            <canvas id="graph-stats--visits" class="s-mdc-card__stats-result" style="height: 325px !important;">
+                            </canvas>
+                            <div class="mdc-typography--caption s-font-color-secondary s-mdc-card__stats-comment">
+                                Número de mujeres atendidas por tipo de servicio
                             </div>
                         </div>
-                        <div class="mdc-typography--headline2 s-font-color-primary s-mdc-card__stats-result">
-                            200
+                    </div>
+                    <div style="display: flex; flex-direction:column;">
+                        <div class="mdc-card s-mdc-card__stats-size-s">
+                            <div class="mdc-card__primary-action" tabindex="0">
+                                <div class="s-mdc-card__stats-title">
+                                    <i class="material-icons s-font-color-chat-away" style="color: #ff6e9b !important;">person</i>
+                                    <div class="mdc-typography--subtitle2">
+                                        Mujeres subsecuentes
+                                    </div>
+                                </div>
+                                <div class="mdc-typography--headline2 s-font-color-primary s-mdc-card__stats-result">
+                                    15
+                                </div>
+                                <div class="mdc-typography--caption s-font-color-secondary s-mdc-card__stats-comment">
+                                    Número de mujeres subsecuentes atendidas
+                                </div>
+                            </div>
                         </div>
-                        <div class="mdc-typography--caption s-font-color-secondary s-mdc-card__stats-comment">
-                            Comunicación con intermitencias
+                        <div class="mdc-card s-mdc-card__stats-size-s">
+                            <div class="mdc-card__primary-action" tabindex="0">
+                                <div class="s-mdc-card__stats-title">
+                                    <i class="material-icons s-font-color-chat-away" style="color: #14b81c !important;">accessibility</i>
+                                    <div class="mdc-typography--subtitle2">
+                                        Servicios CONECTA 
+                                    </div>
+                                </div>
+                                <div class="mdc-typography--headline2 s-font-color-primary s-mdc-card__stats-result">
+                                    10
+                                </div>
+                                <div class="mdc-typography--caption s-font-color-secondary s-mdc-card__stats-comment">
+                                    Número de mujeres que enfrentan violencia que reciben dos o más servicios
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="mdc-card s-mdc-card__stats-size-s">
-                    <div class="mdc-card__primary-action" tabindex="0">
-                        <div class="s-mdc-card__stats-title">
-                            <i class="material-icons s-font-color-very-dissatisfied">signal_wifi_connected_no_internet_4</i>
-                            <div class="mdc-typography--subtitle2">
-                                Atenciones fallidas
+                <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12-desktop mdc-layout-grid__cell--span-4-tablet
+                mdc-layout-grid__cell--span-4-phone mdc-layout-grid__cell--align-top container-stats-list">
+                <div style="display: flex; flex-direction:column;">
+                    <div class="mdc-card s-mdc-card__stats-size-s">
+                        <div class="mdc-card__primary-action" tabindex="0">
+                            <div class="s-mdc-card__stats-title">
+                                <i class="material-icons s-font-color-chat-away" style="color: #458fff !important;">sync</i>
+                                <div class="mdc-typography--subtitle2">
+                                    Referidas a CCM
+                                </div>
                             </div>
-                        </div>
-                        <div class="mdc-typography--headline2 s-font-color-primary s-mdc-card__stats-result">
-                            50
-                        </div>
-                        <div class="mdc-typography--caption s-font-color-secondary s-mdc-card__stats-comment">
-                            No logró comunicarse
+                            <div class="mdc-typography--headline2 s-font-color-primary s-mdc-card__stats-result">
+                                9
+                            </div>
+                            <div class="mdc-typography--caption s-font-color-secondary s-mdc-card__stats-comment">
+                                Número de 15 años o más que fueron referidas y recibieron al menos un servicio
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="mdc-card s-mdc-card__stats-size-s">
-                    <div class="mdc-card__primary-action" tabindex="0">
-                        <div class="s-mdc-card__stats-title">
-                            <i class="material-icons s-font-color-chat-away">timer</i>
-                            <div class="mdc-typography--subtitle2">
-                                Duración promedio
+                    <div class="mdc-card s-mdc-card__stats-size-s">
+                        <div class="mdc-card__primary-action" tabindex="0">
+                            <div class="s-mdc-card__stats-title">
+                                <i class="material-icons s-font-color-chat-away" style="color: #8134e0 !important;">favorite</i>
+                                <div class="mdc-typography--subtitle2">
+                                    Plan de Vida
+                                </div>
                             </div>
-                        </div>
-                        <div class="mdc-typography--headline2 s-font-color-primary s-mdc-card__stats-result">
-                            37 min.
-                        </div>
-                        <div class="mdc-typography--caption s-font-color-secondary s-mdc-card__stats-comment">
-                            Tiempo promedio que dura una atención
+                            <div class="mdc-typography--headline2 s-font-color-primary s-mdc-card__stats-result">
+                                7
+                            </div>
+                            <div class="mdc-typography--caption s-font-color-secondary s-mdc-card__stats-comment">
+                                Número de mujeres que desarrollaron un plan de vida
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="mdc-card s-mdc-card__stats-size-l">
-                    <div class="mdc-card__primary-action" tabindex="0">
-                        <div class="s-mdc-card__stats-title">
-                            <i class="material-icons s-font-color-secondary">query_stats</i>
-                            <div class="mdc-typography--subtitle2">
-                                Vista de visitas
+                    </div>
+                    <div class="mdc-card s-mdc-card__stats-size-l">
+                        <div class="mdc-card__primary-action" tabindex="0">
+                            <div class="s-mdc-card__stats-title">
+                                <i class="material-icons s-font-color-secondary" style="color: #a16830 !important;">domain</i>
+                                <div class="mdc-typography--subtitle2">
+                                    Referida a instancias externas
+                                </div>
                             </div>
-                        </div>
-                        <canvas id="graph-stats--visits" class="s-mdc-card__stats-result">
-                        </canvas>
-                        <div class="mdc-typography--caption s-font-color-secondary s-mdc-card__stats-comment">
-                            Visitas de usuarias a la plataforma
+                            <canvas id="graph-stats--extern" class="s-mdc-card__stats-result" style="height: 325px !important;">
+                            </canvas>
+                            <div class="mdc-typography--caption s-font-color-secondary s-mdc-card__stats-comment">
+                                Número de referencias externas expedidas por institución
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
 </main>
