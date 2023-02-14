@@ -1,3 +1,4 @@
+import json
 from . import crypto_key, db, removeItemFromList, updateItemFromList
 
 from datetime import datetime as dt
@@ -5,7 +6,7 @@ from datetime import timezone as tz
 from flask import Blueprint, request, url_for, jsonify, make_response
 from flask import current_app as app
 from flask_login import current_user, login_required
-from models.models import Appointments, CatalogIDDocumentTypes, CatalogUserRoles, CatalogServices
+from models.models import Appointments, CatalogIDDocumentTypes, CatalogUserRoles, CatalogServices, Country
 from models.models import User, UserExtraInfo, UserXEmployeeAssigned, UserXRole
 
 api = Blueprint('api', __name__, template_folder='templates', static_folder='static')
@@ -82,31 +83,47 @@ def _d_update_appointment():
         app.logger.error('** SWING_CMS ** - API Update extra_info Error: {}'.format(e))
         return jsonify({ 'status': 'error', 'msg': e })
 
-    # Get a list countries
-#@api.route('/api/list/countries', methods = ['GET'])
-#def list_countries(countryId = None):
-    #app.logger.debug('** SWING_CMS ** - API get countries')
-    #try:
-     #   if request.method == 'GET':
-      #      if countryId is not None:
-       #         response = {
-        #            'id': None,
-         #           'name': None,
-          #          'nomenclature': None,
-           #         'structure': None,
-            #        'status': 404
-            #}
-        #detail = User.query.filter(User.id == countryId ).first()
-        #if detail is not None:
-         #   response['status'] = 200
-          #  response['name'] = detail.name
-           # response['nomenclature'] = detail.nomenclature
-            #response['structure'] = detail.structure
-        #return jsonify(response)
+# Get a list countries
+@api.route('/api/list/countries', methods = ['GET'])
+def list_countries():
+    app.logger.debug('** SWING_CMS ** - API get countries')
+    try:
+        if request.method == 'GET':
+            response = {
+                'data': None,
+                'status': 404
+            }
+        result = Country.query.all()
+        if result is not None:
+            response['status'] = 200
+            response['data'] = list(map(lambda x: dict(x), result))
+        return jsonify(response)
         
-    #except Exception as e:
-     #   app.logger.error('** SWING_CMS ** - API User Detail Error: {}'.format(e))
-      #  return jsonify({ 'status': 'error', 'msg': e })
+    except Exception as e:
+        app.logger.error('** SWING_CMS ** - API User Detail Error: {}'.format(e))
+        return jsonify({ 'status': 'error', 'msg': e })
+
+
+# Get a country by id
+@api.route('/api/list/countries/<int:country_id>', methods = ['GET'])
+def get_country_by_id(country_id = None):
+    app.logger.debug('** SWING_CMS ** - API get countries')
+    try:
+        if request.method == 'GET':
+            if country_id is not None:
+                response = {
+                    'data': None,
+                    'status': 404
+                }
+        country = Country.query.filter(Country.id == country_id).first()
+        if country is not None:
+            response['status'] = 200
+            response['data'] = dict(country)
+        return jsonify(response)
+        
+    except Exception as e:
+        app.logger.error('** SWING_CMS ** - API User Detail Error: {}'.format(e))
+        return jsonify({ 'status': 'error', 'msg': e })
 
 # Get the Service's Details
 @api.route('/api/detail/service/<string:service_id>/', methods = ['GET'])
@@ -382,8 +399,8 @@ def _u_userinfo(js):
             user.extra_info.names = js['names']
         if js.get('last_names') is not None:
             user.extra_info.last_names = js['last_names']
-        if js.get('country') is not None:
-            user.extra_info.country = js['country']
+        if js.get('country_id') is not None:
+            user.extra_info.country_id = js['country_id']
         if js.get('state') is not None:
             user.extra_info.state = js['state']
         if js.get('city') is not None:

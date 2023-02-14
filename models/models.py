@@ -634,7 +634,7 @@ class UserExtraInfo(db.Model):
     names = db.Column(db.String(300), unique=False, nullable=True)
     alias = db.Column(db.String(300), unique=False, nullable=True)
     avatar = db.Column(db.String(16), unique=False, nullable=True)
-    country_id = db.Column(db.Integer, db.ForeignKey('country.id'), unique=False, nullable=True)
+    country_id = db.Column(db.Integer, db.ForeignKey('countries.id'), unique=False, nullable=True)
     state = db.Column(db.JSON, unique=False, nullable=True)
     city = db.Column(db.JSON, unique=False, nullable=True)
     extra_data_form = db.Column(db.JSON, unique=False, nullable=True)
@@ -689,7 +689,7 @@ class UserXRole(db.Model):
 
 # Country Class
 class Country(db.Model):
-    __tablename__ = 'country'
+    __tablename__ = 'countries'
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     name = db.Column(db.String(255), unique=False, nullable=False)
     nomenclature = db.Column(db.JSON, unique=False, nullable=True)
@@ -704,3 +704,11 @@ class Country(db.Model):
             nomenclature = self.nomenclature,
             structure = self.structure
         )
+    
+    def __iter__(self):
+        yield from {
+            "id": self.id,
+            "name": self.name,
+            "nomenclature": self.nomenclature,
+            "structure": self.structure
+        }.items()
