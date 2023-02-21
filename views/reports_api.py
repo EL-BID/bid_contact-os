@@ -2,7 +2,7 @@ import decimal
 import json
 
 from . import crypto_key, db, conn, removeItemFromList, updateItemFromList
-
+from sqlalchemy import select
 from datetime import datetime as dt, datetime
 from datetime import timezone as tz
 from flask import Blueprint, request, url_for, jsonify, make_response
@@ -19,8 +19,10 @@ reports_api = Blueprint('reports_api', __name__, template_folder='templates', st
 def _r_kpi():
     app.logger.debug('** SWING_CMS ** - API User Detail')
     try:
-        result = conn.execute(get_kpis()).one()
-        return json.dumps(dict(result))
+        query = select(User)
+        return jsonify({'status': 'ok', 'msg': query})
+        #result = conn.execute(get_kpis()).one()
+        #return json.dumps(dict(result))
     except Exception as e:
         app.logger.error('** SWING_CMS ** - API User Detail Error: {}'.format(e))
         return jsonify({'status': 'error', 'msg': e})

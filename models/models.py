@@ -596,6 +596,20 @@ class User(ElasticMixin, UserMixin, db.Model):
             enabled = self.enabled,
             roles = self.roles
         )
+
+    def get_json(self):
+        return jsonify(
+            id = self.id,
+            uid = self.uid,
+            email = self.email,
+            name = self.name,
+            cmuserid = self.cmuserid,
+            birthdate = self.birthdate,
+            phonenumber = self.phonenumber,
+            notifications = self.notifications,
+            enabled = self.enabled,
+            roles = self.roles
+        )
     
     # Method required by Flask-Login
     def get_id(self):
@@ -650,7 +664,7 @@ class UserExtraInfo(db.Model):
             last_names = self.last_names,
             birthday  = self.birthday,
             avatar = self.avatar,
-            country = self.country,
+            country_id = self.country_id,
             state = self.state,
             city = self.city,
             user_extra_form = self.user_extra_form
@@ -685,7 +699,15 @@ class UserXRole(db.Model):
     datecreated = db.Column(db.DateTime, unique=False, nullable=False, index=True, default=dt.now(tz.utc))
     user = db.relationship('User', back_populates='roles')
     user_role = db.relationship('CatalogUserRoles', back_populates='users')
-
+    
+    def __repr__(self):
+        return jsonify(
+            user_id = self.user_id,
+            user_role_id = self.user_role_id,
+            datecreated = self.datecreated,
+            user = self.user,
+            user_role = self.user_role
+        )
 
 # Country Class
 class Country(db.Model):
