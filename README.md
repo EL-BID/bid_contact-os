@@ -4,6 +4,7 @@
 
 # BID Contact-Os
 
+
 BID Contact-Os, Progressive Web App.
 
 Es una plataforma de comunicación web en tiempo real, que permite comunicar diferentes personas de manera segura por medio de diferentes canales de comunicación como lo son: Audio, Video y Chat. Además, permite la creación de citas, reportería estadística, módulos administrativos, SEO, login SSO y muchas otras funcionalidades que permiten que Contact-Os sea una plataforma versátil y liviana para adoptar y personalizar.
